@@ -8,8 +8,8 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    service = Service('/Users/kkabu/Documents/Automation/Internship/chromedriver')
-    # service = Service('/Users/kkabu/Documents/Automation/Internship/geckodriver')
+    #service = Service('/Users/kkabu/Documents/Automation/Internship/chromedriver')
+    service = Service('/Users/kkabu/Documents/Automation/Internship/geckodriver')
     #context.driver = webdriver.Chrome(service=service)
     # context.driver = webdriver.Firefox(service=service)
     # context.browser = webdriver.Safari()
@@ -21,14 +21,17 @@ def browser_init(context):
     context.app = Application(driver=context.driver)
 
     # HEADLESS MODE ####
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    context.driver = webdriver.Chrome(
-        chrome_options=options,
-        service=service
-    )
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('--headless')
+    # context.driver = webdriver.Chrome(
+    #     chrome_options=options,
+    #     service=service
+    # )
 
-
+    #HEADLESS FIREFOX#
+    options = Options()
+    options.headless = True
+    context.driver = webdriver.Firefox(service=service, options=options)
 
     # # HEADLESS MODE#
     # options = webdriver.ChromeOptions()
